@@ -12,6 +12,13 @@ const resultadoSuma = document.getElementById("resultadoSuma");
 const btnWhile = document.getElementById("btnWhile");
 const resultadoWhile = document.getElementById("resultadoWhile");
 
+function mostrarLista(cantidad) {
+  listaHTML.innerHTML = "";
+  for (let i = 0; i < cantidad; i++) {
+    listaHTML.innerHTML += "<li>" + lista[i] + "</li>";
+  }
+}
+
 btnWhile.addEventListener("click", function() {
   let i = 1;
   let texto = "";
@@ -24,18 +31,8 @@ btnWhile.addEventListener("click", function() {
   resultadoWhile.textContent = texto;
 });
 
-
-btnSumar.addEventListener("click", function(){
-    const valor1 = Number(num1.value);
-    const valor2 = Number(num2.value);
-
-    const resultadoFinal = sumar(valor1, valor2);
-
-    resultadoSuma.textContent = resultadoFinal;
-});
-
 function esNumeroValido(valor) {
-    return valor > 0;
+  return !isNaN(valor);
 }
 
 btnSumar.addEventListener("click", function() {
@@ -51,41 +48,24 @@ btnSumar.addEventListener("click", function() {
   resultadoSuma.textContent = resultadoFinal;
 });
 
-function sumar(a,b) {
-    return a + b;
+function sumar(a, b) {
+  return a + b;
 }
 
-
-btn3.addEventListener("click", function(){
-    listaHTML.innerHTML = "";
-
-    for (let i = 0; i < 3; i++) {
-        listaHTML.innerHTML += "<li>" + lista[i] + "</li>";
-
-    }
+btn3.addEventListener("click", function() {
+  mostrarLista(3);
 });
 
-
-btnLista.addEventListener("click", function(){
-
+btnLista.addEventListener("click", function() {
+  mostrarLista(lista.length);
 });
-
-listaHTML.innerHTML = "";
-
-for(let i = 0; i < lista.length; i++) {
-    listaHTML.innerHTML += "<li>" + lista[i] + "</li>";
-
-}
 
 boton.addEventListener("click", function(){
-if (campo.value === ""){
-    resultado.textContent = "El campo no puede estar vacio";
-
-} else if (campo.value.length < 3){
+  if (campo.value === ""){
+    resultado.textContent = "El campo no puede estar vacío";
+  } else if (campo.value.length < 3){
     resultado.textContent = "Debe tener al menos 3 caracteres";
-
-} else {
-    resultado.textContent = "Valido";
-}
-
+  } else {
+    resultado.textContent = "Válido";
+  }
 });
